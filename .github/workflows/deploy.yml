@@ -5,9 +5,57 @@ on:
   push:
     branches:
       - main
+    inputs:
+      DOCKERFILE_PATH:
+        type: string
+        description: 'Path to the Dockerfile'
+        required: true
+        default: 'dockerfiles/debian_mini'
+
+      IMAGE_SIZE:
+        type: string
+        description: 'Image size, 950M max'
+        required: true
+        default: '600M'
+
+      DEPLOY_TO_GITHUB_PAGES:
+        type: boolean
+        description: 'Deploy to Github pages'
+        required: true
+        default: true
+
+      GITHUB_RELEASE:
+        type: boolean
+        description: 'Upload GitHub release'
+        required: true
+        default: false
   pull_request:
     branches:
       - main
+    inputs:
+      DOCKERFILE_PATH:
+        type: string
+        description: 'Path to the Dockerfile'
+        required: true
+        default: 'dockerfiles/debian_mini'
+
+      IMAGE_SIZE:
+        type: string
+        description: 'Image size, 950M max'
+        required: true
+        default: '600M'
+
+      DEPLOY_TO_GITHUB_PAGES:
+        type: boolean
+        description: 'Deploy to Github pages'
+        required: true
+        default: true
+
+      GITHUB_RELEASE:
+        type: boolean
+        description: 'Upload GitHub release'
+        required: true
+        default: false
   # Allow manual triggering of the workflow from the Actions tab
   workflow_dispatch:
 
