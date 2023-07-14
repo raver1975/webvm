@@ -9,7 +9,7 @@ RUN apt-get -y install apt-utils gcc \
 	less cowsay netcat-openbsd
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y  software-properties-common gnupg
+    apt-get install -y  software-properties-common
 RUN useradd -m user && echo "user:password" | chpasswd
 COPY --chown=user:user ./examples /home/user/examples
 RUN chmod -R +x  /home/user/examples/lua
@@ -18,11 +18,7 @@ RUN chmod -R +x  /home/user/examples/lua
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
-## JAVA INSTALLATION
-RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
-RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" > /etc/apt/sources.list.d/webupd8team-java-trusty.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes --no-install-recommends oracle-java8-installer && apt-get clean all
+RUN add-apt-repository ppa:linuxuprising/java && apt update &&  apt install oracle-java11-installer
 RUN apt-get update && apt-get install -y \
     apache2 \
     curl \
