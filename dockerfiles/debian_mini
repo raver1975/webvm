@@ -19,7 +19,7 @@ RUN chmod -R +x  /home/user/examples/lua
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
 #-----------------------------------------
-RUN apt install default-jdk
+RUN apt install -y default-jdk
 #-----------------------------------------
 RUN apt-get update && apt-get install -y \
     apache2 \
