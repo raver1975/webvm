@@ -3,9 +3,7 @@ name: Deploy
 # Define when the workflow should run
 on:
   # Allow manual triggering of the workflow from the Actions tab
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
   # Allow inputs to be passed when manually triggering the workflow from the Actions tab
     inputs:
