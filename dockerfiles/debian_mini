@@ -26,9 +26,9 @@ RUN apt-get update && apt-get install -y \
     curl \
     git \
     libapache2-mod-php5 \
-    php5 \
-    php5-mcrypt \
-    php5-mysql \
+    php5.6 \
+    php5.6-mcrypt \
+    php5.6-mysql \
     python3.4 \
     python3-pip
 COPY ./src /usr/src/myapp
