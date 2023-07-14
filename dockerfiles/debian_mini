@@ -21,7 +21,7 @@ RUN echo 'root:password' | chpasswd
 RUN add-apt-repository ppa:linuxuprising/java && apt update &&  apt install oracle-java11-installer
 RUN apt-get -y install software-properties-common
 #-----------------------------------------
-apt-get install java 20.0.1-graal
+RUN apt-get install java 20.0.1-graal
 #-----------------------------------------
 RUN apt-get update && apt-get install -y \
     apache2 \
