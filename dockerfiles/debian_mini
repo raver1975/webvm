@@ -18,15 +18,26 @@ RUN chmod -R +x  /home/user/examples/lua
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
-#CMD [ "/bin/bash" ]
-#RUN apt-get install -y --no-install-recommends openjdk-8-jdk
-RUN apt-get install -y --no-install-recommends software-properties-common
-RUN add-apt-repository -y ppa:openjdk-r/ppa
-#RUN apt-get update
-RUN apt-get install -y openjdk-8-jdk
-RUN apt-get install -y openjdk-8-jre
-RUN update-alternatives --config java
-RUN update-alternatives --config javac
+
+RUN apt-get update && apt-get install -y \
+    software-properties-common
+
+# Add the "JAVA" ppa
+RUN add-apt-repository -y \
+    ppa:webupd8team/java
+
+# Install OpenJDK-8
+RUN apt-get update && \
+    apt-get install -y openjdk-8-jdk && \
+    apt-get install -y ant && \
+    apt-get clean;
+
+# Fix certificate issues
+RUN apt-get update && \
+    apt-get install ca-certificates-java && \
+    apt-get clean && \
+    update-ca-certificates -f;
+
 RUN apt-get update && apt-get install -y \
     apache2 \
     curl \
