@@ -26,8 +26,6 @@ RUN apt-get update && apt-get install -y \
     git \
     libapache2-mod-php \
     php7.0 \
-    php7.0-mcrypt \
-    php7.0-mysql \
     python3.4 \
     python3-pip
 COPY ./src /usr/src/myapp
