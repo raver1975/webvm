@@ -19,7 +19,14 @@ RUN chmod -R +x  /home/user/examples/lua
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
 #CMD [ "/bin/bash" ]
-RUN apt-get install -y --no-install-recommends openjdk-11-jdk
+#RUN apt-get install -y --no-install-recommends openjdk-8-jdk
+RUN apt-get install -y --no-install-recommends software-properties-common
+RUN add-apt-repository -y ppa:openjdk-r/ppa
+RUN apt-get update
+RUN apt-get install -y openjdk-8-jdk
+RUN apt-get install -y openjdk-8-jre
+RUN update-alternatives --config java
+RUN update-alternatives --config javac
 RUN apt-get update && apt-get install -y \
     apache2 \
     curl \
