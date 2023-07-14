@@ -25,7 +25,7 @@ RUN apt-get update && apt-get install -y \
     apache2 \
     curl \
     git \
-    libapache2-mod-php5 \
+    libapache2-mod-php5.6 \
     php5.6 \
     php5.6-mcrypt \
     php5.6-mysql \
