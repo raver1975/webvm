@@ -16,12 +16,6 @@ RUN chmod -R +x  /home/user/examples/lua
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
 #CMD [ "/bin/bash" ]
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y  software-properties-common && \
-    add-apt-repository ppa:webupd8team/java -y && \
-    apt-get update && \
-    apt-get clean
 RUN apt-get install -y --no-install-recommends openjdk-11-jre
 RUN add-apt-repository universe
 RUN apt-get update && apt-get install -y \
