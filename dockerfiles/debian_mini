@@ -19,7 +19,7 @@ RUN chmod -R +x  /home/user/examples/lua
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
 #-----------------------------------------
-RUN apt install -y default-jdk
+#RUN apt install -y default-jdk
 #-----------------------------------------
 RUN apt-get update && apt-get install -y \
     curl \
@@ -30,8 +30,8 @@ RUN apt-get update && apt-get install -y \
     python3-pip
 COPY ./src /usr/src/myapp
 WORKDIR /usr/src/myapp
-RUN javac Main.java
+#RUN javac Main.java
 RUN pip3 install -r requirements.txt
-ENV LD_LIBRARY_PATH=/usr/lib/jvm/java-11-openjdk-i386/lib:/usr/lib/jvm/java-11-openjdk-i386/lib/jli:$LD_LIBRARY_PATH
-CMD ["/usr/lib/jvm/java-11-openjdk-i386/bin/java Main"]
-#CMD ["/bin/bash"]
+#ENV LD_LIBRARY_PATH=/usr/lib/jvm/java-11-openjdk-i386/lib:/usr/lib/jvm/java-11-openjdk-i386/lib/jli:$LD_LIBRARY_PATH
+#CMD ["/usr/lib/jvm/java-11-openjdk-i386/bin/java Main"]
+CMD ["/bin/bash"]
