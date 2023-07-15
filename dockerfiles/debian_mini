@@ -18,11 +18,8 @@ RUN chmod -R +x  /home/user/examples/lua
 # We set env, as this gets extracted by Webvm. This is optional.
 ENV HOME="/home/user" TERM="xterm" USER="user" SHELL="/bin/bash" EDITOR="vim" LANG="en_US.UTF-8" LC_ALL="C"
 RUN echo 'root:password' | chpasswd
-RUN apt-get install -y wget gnupg2
 #-----------------------------------------
-RUN apt-add-repository 'deb http://security.debian.org/debian-security stretch/updates main'
-RUN apt-get update
-RUN apt-get install openjdk-8-jdk
+RUN apt install -y default-jdk
 #-----------------------------------------
 RUN apt-get update && apt-get install -y \
     apache2 \
