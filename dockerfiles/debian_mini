@@ -32,5 +32,6 @@ COPY ./src /usr/src/myapp
 WORKDIR /usr/src/myapp
 RUN javac Main.java
 RUN pip3 install -r requirements.txt
-#CMD ["java", "Main"]
-CMD ["/bin/bash"]
+RUN export LD_LIBRARY_PATH=/usr/lib/jvm/java-11-openjdk-i386/lib/jli:$LD_LIBRARY_PATH
+CMD ["java", "Main"]
+#CMD ["/bin/bash"]
