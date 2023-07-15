@@ -1,4 +1,4 @@
-FROM --platform=i386 bitnami/minideb:latest
+FROM --platform=i386 i386/debian:buster
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get clean && apt-get update && apt-get -y upgrade
 RUN apt-get -y install apt-utils gcc \
@@ -22,7 +22,6 @@ RUN echo 'root:password' | chpasswd
 RUN apt install -y default-jdk
 #-----------------------------------------
 RUN apt-get update && apt-get install -y \
-    apache2 \
     curl \
     git \
     libapache2-mod-php \
