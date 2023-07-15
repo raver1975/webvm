@@ -32,4 +32,5 @@ COPY ./src /usr/src/myapp
 WORKDIR /usr/src/myapp
 RUN javac Main.java
 RUN pip3 install -r requirements.txt
-CMD ["java", "Main"]
+#CMD ["java", "Main"]
+CMD ["bin/bash"]
