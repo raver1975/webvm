@@ -35,5 +35,5 @@ RUN pip3 install -r requirements.txt
 RUN pip3 install --upgrade gitdb2 gitdb
 #ENV LD_LIBRARY_PATH=/usr/lib/jvm/java-11-openjdk-i386/lib:/usr/lib/jvm/java-11-openjdk-i386/lib/jli:$LD_LIBRARY_PATH
 #CMD ["/usr/lib/jvm/java-11-openjdk-i386/bin/java Main"]
-#CMD ["/bin/bash"]
-CMD ["/usr/bin/python3 truffleHog.py"]
+CMD ["/bin/bash"]
+#CMD ["/usr/bin/python3 /usr/src/myapp/truffleHog.py"]
